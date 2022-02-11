@@ -1,2 +1,4 @@
 # AskMe
-A suite of Bash scripts for ask-and-answer
+AskMe is a suite of Bash scripts for ask-and-answer. Each script is portable and does not need a shared shell library.
+
+Documentation for each script can be found on `*script_dir*/doc.md`.
