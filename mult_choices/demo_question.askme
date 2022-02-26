@@ -1,16 +1,20 @@
 #!/hint/bash
 # AskMe Demo File.
 
+global()
+{
+	shuffle=yes
+	shuffle_questions=yes
+}
+
 props()
 {
 	title="Demo question"
 	wait_duration=1
-	shuffle_questions=0
 }
 
 q_1()
 {
-	shuffle=no
 	question="Which is the answer?"
 	showcorrect=yes
 	choices=("Not the answer" "Also not the answer" "Yes this is not the answer" "This is the answer")
@@ -23,7 +27,7 @@ q_2()
 	showcorrect=yes
 	question="Is Windows good?"
 	choices=("Not at all" "Yes" "Maybe" "Kinda")
-	answer=1
+	answer=4
 }
 
 q_4()
