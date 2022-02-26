@@ -11,10 +11,13 @@ Want to prepare for your exam? Great! Now you can do that from your command line
 Usage: [options] \<AskMe file\>
 
 Options:
-	-h   --help          Show this help
-	-V   --version       Print version
-	-n   --no-unicode    Only use ASCII (useful in TTYs)
-	-a   --auto-enter    Enter choice automatically after user input
+-h   --help          Show this help
+
+-V   --version       Print version
+	
+-n   --no-unicode    Only use ASCII (useful in TTYs)
+	
+-a   --auto-enter    Enter choice automatically after user input
 
 ## Writing .askme Files
 An .askme file contains **global variables** (`global`) *(not required)*, **properties** (`props`), and **questions** (`q_n`). It is written in Bash as functions that assign variables.
