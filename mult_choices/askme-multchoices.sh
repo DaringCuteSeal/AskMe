@@ -6,7 +6,7 @@
 export LANG=C
 
 # AskMe version .. ↓
-version='1.0.4'
+version='1.0.3'
 
 # Escape codes for styling
 style_bold='\e[0;1m'
@@ -283,6 +283,8 @@ main(){
 		sleep 1s
 	fi
 }
+
+try global && global
 
 if [[ "$shuffle_questions" == "yes" ]]
 then
