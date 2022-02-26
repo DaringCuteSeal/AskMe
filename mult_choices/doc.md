@@ -74,7 +74,7 @@ The `props()` function contains properties for the question. Available propertie
 - title: your question title (string)
 
 ### Questions
-**Question functions** should be named **q_1**, **q_2**, and so on. It needs to contain these variables:
+**Question functions** should be named `q_1`, `q_2`, and so on. It needs to contain these variables:
 - question: your question (string)
 - choices: array of choices (strings)
 - answer: answer for your question (integer: index of choices array (starts from 1))
