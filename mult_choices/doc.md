@@ -11,6 +11,7 @@ Want to prepare for your exam? Great! Now you can do that from your command line
 Usage: [options] \<AskMe file\>
 
 Options:
+
 -h   --help          Show this help
 
 -V   --version       Print version
