@@ -1,0 +1,14 @@
+v.1.0.2
+Initial release
+
+v.1.0.3
+Better error handling
+
+v.1.0.4
+Added:
+- Ability to shuffle questions and choices
+- New options
+- Global variables
+
+Fixed:
+- Unexpected behaviour when a variable is missing
