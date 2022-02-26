@@ -33,6 +33,7 @@ global()
 
 	shuffle_questions=yes
 	shuffle=yes
+	...
 
 props()
 {
@@ -58,6 +59,7 @@ q_2()
 	choices=("True" "False")
 	answer=1
 }
+...
 ```
 
 
