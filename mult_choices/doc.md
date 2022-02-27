@@ -33,13 +33,12 @@ global()
 
 	shuffle_questions=yes
 	shuffle=yes
+	wait_duration=1
 	...
 
 props()
 {
 	title="Your title"
-	wait_duration=1
-	shuffle_questions=0
 	...
 }
 
@@ -68,6 +67,7 @@ The `global()` function contains variables for questions. It is *not required*. 
 - shuffle\_questions: shuffle questions order (yes|no)
 - shuffle: shuffle choices (yes|no)
 - showcorrect: show correct answer after user answers (yes|no)
+- wait_duration: *n* second delay after answering a question (int) 
 
 ### Properties
 The `props()` function contains properties for the question. Available properties are:
