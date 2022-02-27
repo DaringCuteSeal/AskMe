@@ -103,6 +103,7 @@ fi
 
 INT_handle(){
 	info "Interrupt signal received, quitting.."
+	print_correct 2>/dev/null
 	exit 0
 }
 
@@ -224,7 +225,14 @@ check_alphabets(){
 	done
 }
 
+print_correct(){
+	echo -e "\e[31;35mCorrect answers: $correct/$nQ"
+}
+
+
 Qs=($(grep -Eo "q_[0-9]*" "$file"))
+nQ=${#Qs[@]}
+correct=0
 
 main(){
 
@@ -271,6 +279,7 @@ main(){
 
 	if [[ "${input_answer@L}" == "$correct_answer" ]]
 	then
+		correct=$(($correct+1))
 		echo -e "\e[31;32m $([[ $unicode == "no" ]] || echo "✔") That's correct!\n${style_reset}"
 		sleep ${wait_duration}s
 	else
@@ -293,11 +302,13 @@ then
 
 fi
 
-for (( index=0; index < ${#Qs[@]}; index=$(($index+1)) ))
+for (( index=0; index < $nQ; index=$(($index+1)) ))
 do
 	func="${Qs[$index]}"
 	main
 done
+
+print_correct
 
 ### End of Specific AskMe Loop ###
 
