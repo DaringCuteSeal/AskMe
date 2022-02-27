@@ -173,6 +173,7 @@ unset fancytext
 
 func_vars=('question' 'choices' 'answer' 'input_answer')
 required_func_vars=('question' 'choices' 'answer')
+[[ -z "$wait_duration" ]] && wait_duration=1
 
 alphabets=({a..z})
 
@@ -271,7 +272,7 @@ main(){
 	if [[ "${input_answer@L}" == "$correct_answer" ]]
 	then
 		echo -e "\e[31;32m $([[ $unicode == "no" ]] || echo "✔") That's correct!\n${style_reset}"
-		sleep 1s
+		sleep ${wait_duration}s
 	else
 		echo -e "\e[31;31m $([[ $unicode == "no" ]] || echo "✗") Not quite correct..\n${style_reset}"
 
@@ -280,7 +281,7 @@ main(){
 			echo -e " ${style_bold}The correct answer is: $correct_answer${style_reset}\n"
 		fi
 
-		sleep 1s
+		sleep ${wait_duration}s
 	fi
 }
 

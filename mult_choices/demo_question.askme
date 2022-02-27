@@ -5,12 +5,12 @@ global()
 {
 	shuffle=yes
 	shuffle_questions=yes
+	wait_duration=1
 }
 
 props()
 {
 	title="Demo question"
-	wait_duration=1
 }
 
 q_1()
