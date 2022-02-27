@@ -135,8 +135,10 @@ checkprops()
 {
 	for i in "${required_props[@]}"
 	do
-		eval "[[ -z \$$i ]] && { warn 'At props: variable \"$i\" not found, using default value\n'
-					default_props $i; }"
+		eval "[[ -z \$$i ]] && {
+			warn 'At props: variable \"$i\" not found, using default value\n'
+			default_props $i
+		}"
 	done
 }
 
@@ -196,10 +198,7 @@ ask(){
 		do
 			choices+=("${old_choices[$i]}")
 			j=$(($j+1))
-			if [[ $i == $ans_index ]]
-			then
-				answer=$j
-			fi
+			[[ $i == $ans_index ]] && answer=$j
 		done
 		unset j
 
@@ -240,14 +239,14 @@ main(){
 	unset ${func_vars[@]}
 
 	# Error when question cannot be found
-	eval "try $func" || {
+	try "$func" || {
 		warn "Function $func could not be executed!\n"
 		return
 	}
 
-	eval "$func"
-
 	try global && global
+
+	"$func"
 
 	# Which question is this?
 	[[ "$shuffle_questions" == "yes" ]] && qN="$(($index+1))" || qN="${func#*_}"
@@ -256,9 +255,9 @@ main(){
 	for i in "${required_func_vars[@]}"
 	do
 		# I couldn't use "\$${i}" for some reason
-		try_string="$(eval echo "\$$i")"
+		try_string="$(echo "\$$i")"
 		[[ -z "$try_string" ]] && {
-			warn "At question $qN: required variable \"$i\" missing, skipping this question..\n"
+			warn "At question $qN (function $func): required variable \"$i\" missing, skipping this question..\n"
 			return
 		}
 	done
