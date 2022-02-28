@@ -37,10 +37,17 @@ AskMe (Multiple Choice) v.$version
 Usage: ${0##*/} [options] <AskMe file>
 
 Options:
-	-h   --help          Show this help
-	-V   --version       Print version
-	-n   --no-unicode    Only use ASCII (useful in TTYs)
-	-a   --auto-enter    Enter choice automatically after user input
+	-h   --help                  Show this help
+	-V   --version               Print version
+
+	-n   --no-unicode            Only use ASCII (useful in TTYs)
+	-a   --auto-enter            Enter choice automatically after user input
+
+Special options (overrides variables set on AskMe file):
+	-q   --shuffle-questions     Shuffle questions
+	-s   --shuffle-choices       Shuffle choices
+	-c   --show-correct          Show correct answer
+	
 EOF
 }
 
@@ -68,6 +75,19 @@ do
 			;;
 		-a|--auto-enter)
 			auto_enter=yes
+			shift
+			;;
+
+		-q|--shuffle-questions)
+			var_override+=(shuffle_questions)
+			shift
+			;;
+		-s|--shuffle-choices)
+			var_override+=(shuffle)
+			shift
+			;;
+		-c|--show-correct)
+			var_override+=(show_correct)
 			shift
 			;;
 
@@ -111,6 +131,18 @@ trap INT_handle SIGINT
 
 # Source file to get all functions
 source "$file" || die "Failed to source file" 1
+
+override(){
+	if [[ -n "${var_override}" ]]
+	then
+		for i in "${var_override[@]}"
+		do
+			eval "$i=yes"
+		done
+	fi
+}
+
+override
 
 ### End of AskMe header ###
 
@@ -245,6 +277,7 @@ main(){
 	}
 
 	try global && global
+	override
 
 	"$func"
 
@@ -284,7 +317,7 @@ main(){
 	else
 		echo -e "\e[31;31m $([[ $unicode == "no" ]] || echo "✗") Not quite correct..\n${style_reset}"
 
-		if [[ "$showcorrect" == "yes" ]]
+		if [[ "$show_correct" == "yes" ]]
 		then
 			echo -e " ${style_bold}The correct answer is: $correct_answer${style_reset}\n"
 		fi
@@ -294,6 +327,7 @@ main(){
 }
 
 try global && global
+override
 
 if [[ "$shuffle_questions" == "yes" ]]
 then

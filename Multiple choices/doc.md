@@ -1,4 +1,4 @@
-# AskMe (Multiple Choices) v.1.0.4
+# AskMe (Multiple Choices) v.1.0.5
 Want to prepare for your exam? Great! Now you can do that from your command line.
 
 ## Features
@@ -20,8 +20,8 @@ Options:
 	
 - -a|--auto-enter: Enter choice automatically after user input
 
-## Writing .askme Files
-An .askme file contains **global variables** (`global`) *(not required)*, **properties** (`props`), and **questions** (`q_n`). It is written in Bash as functions that assign variables.
+## Writing Files
+An (multiple choices) AskMe file contains **global variables** (`global`) *(not required)*, **properties** (`props`), and **questions** (`q_n`). It is written in Bash as functions that assign variables.
 
 Generally, (multiple choices) AskMe file should look like this:
 
@@ -46,7 +46,7 @@ q_1()
 {
 	shuffle=no
 	question="Your question"
-	showcorrect=yes
+	show_correct=yes
 	choices=("Incorrect answer" "Also incorrect answer" "Correct answer")
 	answer=3
 }
@@ -54,7 +54,7 @@ q_1()
 q_2()
 {
 	question="Your second question"
-	showcorrect=no
+	show_correct=no
 	choices=("True" "False")
 	answer=1
 }
@@ -66,8 +66,8 @@ q_2()
 The `global()` function contains variables for questions. It is *not required*. Available global variables are:
 - shuffle\_questions: shuffle questions order (yes|no)
 - shuffle: shuffle choices (yes|no)
-- showcorrect: show correct answer after user answers (yes|no)
-- wait_duration: *n* second delay after answering a question (int) 
+- show\_correct: show correct answer after user answers (yes|no)
+- wait\_duration: *n* second delay after answering a question (int) 
 
 ### Properties
 The `props()` function contains properties for the question. Available properties are:

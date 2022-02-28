@@ -1,0 +1,19 @@
+#!/hint/bash
+# Demo AskMe questions
+
+title="The Periodic Table"
+subtitle="Answer the periodic table symbols with their corresponding element name."
+
+show_correct=yes
+shuffle=yes
+loop=yes
+wait_duration=1
+
+declare -A questions=(
+["H"]="Hydrogen"
+['He']='Helium'
+[Li]='Lithium'
+["Be"]='Beryllium'
+["Ag"]='("Argentum" "Silver")'
+# ["Question with multiple words - make sure to use single quotation mark around the parenthesis"]='("first one" "second one")'
+)

@@ -12,3 +12,13 @@ Added:
 
 Fixed:
 - Unexpected behaviour when a variable is missing
+
+v.1.0.5
+Added:
+- Command line options to override variables defined on AskMe files
+
+Changed:
+- Some variable naming consistency
+
+Fixed:
+- Minor bugs
