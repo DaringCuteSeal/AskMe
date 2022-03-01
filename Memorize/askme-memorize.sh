@@ -33,7 +33,7 @@ try(){
 
 print_help(){
 	cat << EOF
-AskMe (Multiple Choice) v.$version
+AskMe (Memorize) v.$version
 Usage: ${0##*/} [options] <AskMe file>
 
 Options:
