@@ -204,6 +204,9 @@ ${fancytext}${reset}
 
 unset fancytext
 
+# Try to automatically detect if we're on a VT
+{ [[ "$TERM" == "linux" ]] || [[ "$TERM" =~ "vt" ]]; } && unicode=no
+
 ### Specific AskMe Loop ###
 
 func_vars=('question' 'choices' 'answer' 'input_answer')
@@ -260,6 +263,9 @@ print_correct(){
 	echo -e "\e[31;35mCorrect answers: $correct/$nQ"
 }
 
+if_unicode(){
+	[[ ! "$unicode" == "no" ]] && echo "$1" || { [[ -n "$2" ]] && echo "$2"; }
+}
 
 Qs=($(grep -Eo "q_[0-9]*" "$file"))
 nQ=${#Qs[@]}
@@ -276,7 +282,7 @@ main(){
 		return
 	}
 
-	try global && global
+	try props && props
 	override
 
 	"$func"
@@ -312,10 +318,10 @@ main(){
 	if [[ "${input_answer@L}" == "$correct_answer" ]]
 	then
 		correct=$(($correct+1))
-		echo -e "\e[31;32m $([[ $unicode == "no" ]] || echo "✔") That's correct!\n${style_reset}"
+		echo -e "\e[31;32m $(if_unicode "✔") That's correct!\n${style_reset}"
 		sleep ${wait_duration}s
 	else
-		echo -e "\e[31;31m $([[ $unicode == "no" ]] || echo "✗") Not quite correct..\n${style_reset}"
+		echo -e "\e[31;31m $(if_unicode "✗") Not quite correct..\n${style_reset}"
 
 		if [[ "$show_correct" == "yes" ]]
 		then
@@ -326,7 +332,7 @@ main(){
 	fi
 }
 
-try global && global
+try props && props
 override
 
 if [[ "$shuffle_questions" == "yes" ]]

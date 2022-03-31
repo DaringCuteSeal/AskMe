@@ -28,17 +28,13 @@ Generally, (multiple choices) AskMe file should look like this:
 ```bash
 #!/hint/bash
 
-global()
-{
-
-	shuffle_questions=yes
-	shuffle=yes
-	wait_duration=1
-	...
-
 props()
 {
 	title="Your title"
+	shuffle_questions=yes
+	shuffle=yes
+	wait_duration=1
+
 	...
 }
 
@@ -63,15 +59,12 @@ q_2()
 
 
 ### Global Variables
-The `global()` function contains variables for questions. It is *not required*. Available global variables are:
+The `global()` function contains properties (variables) for the questions. The *title* variable is the only one needed, although it'll fall back to the default value when unset . Available global variables are:
+- title: your question title (string)
 - shuffle\_questions: shuffle questions order (yes|no)
 - shuffle: shuffle choices (yes|no)
 - show\_correct: show correct answer after user answers (yes|no)
 - wait\_duration: *n* second delay after answering a question (int) 
-
-### Properties
-The `props()` function contains properties for the question. Available properties are:
-- title: your question title (string)
 
 ### Questions
 **Question functions** should be named `q_1`, `q_2`, and so on. It needs to contain these variables:

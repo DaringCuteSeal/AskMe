@@ -149,22 +149,19 @@ default_props()
 	do
 		case "$j" in
 			title)
-				title="Multiple Choice Question"
+				title="AskMe Memorize Question"
 				;;
 		esac
 	done
 }
 
-checkprops()
-{
-	for i in "${required_props[@]}"
-	do
-		eval "[[ -z \$$i ]] && {
-			warn 'At props: variable \"$i\" not found, using default value\n'
-			default_props $i
-		}"
-	done
-}
+for i in "${required_props[@]}"
+do
+	eval "[[ -z \$$i ]] && {
+		warn 'At props: variable \"$i\" not found, using default value\n'
+		default_props $i
+	}"
+done
 
 ### End of default properties and properties checking ###
 
@@ -184,6 +181,9 @@ ${fancytext}${reset}
 "
 
 unset fancytext
+
+# Try to automatically detect if we're on a VT
+{ [[ "$TERM" == "linux" ]] || [[ "$TERM" =~ "vt" ]]; } && unicode=no
 
 ### Specific AskMe Loop ###
 
@@ -209,6 +209,10 @@ print_correct(){
 	eval "echo -e \"\e[31;35mCorrect answers: $correct/$i\""
 }
 
+if_unicode(){
+	[[ ! "$unicode" == "no" ]] && echo "$1" || { [[ -n "$2" ]] && echo "$2"; }
+}
+
 Qs=("${!questions[@]}")
 nQ="${#questions[@]}"
 correct=0
@@ -219,7 +223,7 @@ correct=0
 main(){
 
 	# Unset variables from previous questions
-	unset input_answer yep
+	unset input_answer yep correct_answer
 
 	# Ask
 	ask
@@ -238,6 +242,8 @@ main(){
 	if [[ -n "$(echo $correct_answer | grep -E '\((.)*\)')" ]]
 	then
 		eval "correct_answer=$correct_answer"
+	else
+		correct_answer="$correct_answer"
 	fi
 
 	for i in "${correct_answer[@]}"
@@ -247,7 +253,7 @@ main(){
 			if [[ "${input_answer@L}" == "$i" ]]
 			then
 				correct=$(($correct+1))
-				echo -e "\e[31;32m $([[ $unicode == "no" ]] || echo "✔") That's correct!\n${style_reset}"
+				echo -e "\e[31;32m $(if_unicode "✔") That's correct!\n${style_reset}"
 				sleep ${wait_duration}s
 				yep="true"
 			fi
@@ -256,10 +262,20 @@ main(){
 	done
 	if [[ "$yep" != "true" ]]
 	then
-		echo -e "\e[31;31m $([[ $unicode == "no" ]] || echo "✗") Not quite correct..\n${style_reset}"
+		echo -e "\e[31;31m $(if_unicode "✗") Not quite correct..\n${style_reset}"
 		if [[ "$show_correct" == "yes" ]]
 		then
-			echo -e " ${style_bold}The correct answer is: $correct_answer${style_reset}\n"
+			if [[ "${#correct_answer[@]}" -gt 1 ]]
+			then
+				echo -e " ${style_bold}The correct answers are:"
+				for i in "${correct_answer[@]}"
+				do
+					echo -e " $(if_unicode "•" "-") ${i}"
+				done
+				echo
+			else
+				echo -e " ${style_bold}The correct answer is: $correct_answer${style_reset}\n"
+			fi
 		fi
 
 		sleep ${wait_duration}s

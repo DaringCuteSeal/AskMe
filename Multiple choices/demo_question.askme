@@ -6,6 +6,7 @@ global()
 	shuffle=yes
 	shuffle_questions=yes
 	wait_duration=1
+	show_correct=yes
 }
 
 props()
@@ -16,7 +17,6 @@ props()
 q_1()
 {
 	question="Which is the answer?"
-	showcorrect=yes
 	choices=("Not the answer" "Also not the answer" "Yes this is not the answer" "This is the answer")
 	answer=4
 }
@@ -24,7 +24,6 @@ q_1()
 q_2()
 {
 	shuffle=no
-	showcorrect=yes
 	question="Is Windows good?"
 	choices=("Not at all" "Yes" "Maybe" "Kinda")
 	answer=4
@@ -33,7 +32,7 @@ q_2()
 q_4()
 {
 	shuffle=no
-	showcorrect=no
+	show_correct=no
 	question="Question 3 was skipped.."
 	choices=("Cool" "Meh")
 	answer=1
