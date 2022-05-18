@@ -35,7 +35,7 @@ wait_duration=1
 loop=yes
 ...
 
-declare -A questions=)
+declare -A questions=(
 ["Cow"]="Moo"
 [Chicken]=Cluck
 ['Dog']="Woof"
