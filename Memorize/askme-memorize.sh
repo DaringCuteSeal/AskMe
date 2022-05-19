@@ -50,7 +50,7 @@ EOF
 
 print_ver(){
 	cat << EOF
-AskMe - Multiple Choice version $version
+AskMe - Memorize - version $version
 EOF
 }
 
