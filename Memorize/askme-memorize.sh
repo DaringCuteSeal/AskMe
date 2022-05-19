@@ -269,7 +269,6 @@ main(){
 	if [[ "$yep" != "true" ]]
 	then
 		echo -e "\e[31;31m $(if_unicode "✗") Not quite correct..\n${style_reset}"
-		sleep ${wait_duration}s
 
 		if [[ "$show_correct" == "yes" ]]
 		then
@@ -285,6 +284,8 @@ main(){
 				echo -e " ${style_bold}The correct answer is: $correct_answer${style_reset}\n"
 			fi
 		fi
+
+		sleep ${wait_duration}s
 
 	fi
 
