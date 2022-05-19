@@ -234,6 +234,10 @@ main(){
 		get_answer
 	done
 
+	# Increment the amount of questions we've answered
+	# if we're looping forever
+	[[ "$loop" == "yes" ]] && nQ_loop=$(($nQ_loop+1))
+
 	# Check answer
 	ans_index=$(($answer-1))
 
@@ -245,6 +249,7 @@ main(){
 	else
 		correct_answer="$correct_answer"
 	fi
+
 
 	for i in "${correct_answer[@]}"
 	do
@@ -260,9 +265,12 @@ main(){
 			break
 		done
 	done
+
 	if [[ "$yep" != "true" ]]
 	then
 		echo -e "\e[31;31m $(if_unicode "✗") Not quite correct..\n${style_reset}"
+		sleep ${wait_duration}s
+
 		if [[ "$show_correct" == "yes" ]]
 		then
 			if [[ "${#correct_answer[@]}" -gt 1 ]]
@@ -278,10 +286,9 @@ main(){
 			fi
 		fi
 
-		sleep ${wait_duration}s
 	fi
 
-	[[ "$loop" == "yes" ]] && nQ_loop=$(($nQ_loop+1))
+
 }
 
 shuffle(){
