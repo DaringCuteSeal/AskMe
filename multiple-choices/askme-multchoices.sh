@@ -6,7 +6,7 @@
 export LANG=C
 
 # AskMe version .. ↓
-version='1.0.5'
+version='1.0.6'
 
 # Escape codes for styling
 style_bold='\e[0;1m'
@@ -53,7 +53,7 @@ EOF
 
 print_ver(){
 	cat << EOF
-AskMe - Multiple Choice version $version
+AskMe - Multiple Choice - version $version
 EOF
 }
 
