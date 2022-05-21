@@ -121,6 +121,13 @@ INT_handle(){
 
 trap INT_handle SIGINT
 
+# Quit if input is not a terminal
+if ! stty &>/dev/null 
+then
+	echo "Input not a terminal!"
+	exit 1
+fi
+
 # Source file to get all functions
 source "$file" || die "Failed to source file" 1
 
@@ -206,7 +213,7 @@ print_correct(){
 
 	fi
 
-	eval "echo -e \"\e[31;35mCorrect answers: $correct/$i\""
+	echo -e "\e[31;35mCorrect answers: $correct/$i"
 }
 
 if_unicode(){
