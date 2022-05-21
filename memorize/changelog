@@ -1,2 +1,8 @@
 v.1.0.5
 Initial release
+
+v.1.0.6
+minor fixes for 1.0.6:
+- Double sleep duration issue
+- Incorrect amount of questions done displayed when terminated at certain period
+- Exit if input is not from terminal
