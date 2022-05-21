@@ -1,4 +1,5 @@
 # AskMe (dmenu) v.1.0.6
+![demo](demo.gif)
 Memorize stuff like words from other languages, terms, etc. quickly.
 This script uses [dmenu](https://tools.suckless.org/dmenu/) to display available choices for answering. It is backwards-compatible with [AskMe Memorize](../memorize).
 
