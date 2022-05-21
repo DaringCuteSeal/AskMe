@@ -22,3 +22,7 @@ Changed:
 
 Fixed:
 - Minor bugs
+
+v.1.0.6
+Added:
+- exit if input is not from terminal
