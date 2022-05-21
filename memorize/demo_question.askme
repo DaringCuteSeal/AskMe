@@ -15,5 +15,5 @@ declare -A questions=(
 [Li]='Lithium'
 ["Be"]='Beryllium'
 ["Ag"]='("Argentum" "Silver")'
-# ["Question with multiple words on each choice - make sure to use single quotation mark around the parenthesis"]='("first one" "second one")'
+# ["Question with multiple words on each choice - make sure to use single quotation mark around the parentheses"]='("first one" "second one")'
 )
