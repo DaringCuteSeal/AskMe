@@ -1,4 +1,4 @@
-# AskMe (Multiple Choices) v.1.0.5
+# AskMe (Multiple Choices) v.1.0.6
 Want to prepare for your exam? Great! Now you can do that from your command line.
 
 ## Features
