@@ -6,7 +6,7 @@
 export LANG=C
 
 # AskMe version .. ↓
-version='1.0.5'
+version='1.0.6'
 
 # Escape codes for styling
 style_bold='\e[0;1m'
