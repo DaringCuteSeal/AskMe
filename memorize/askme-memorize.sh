@@ -218,7 +218,7 @@ nQ="${#questions[@]}"
 correct=0
 
 [[ "$loop" == "yes" ]] && nQ_loop=0
-[[ -n "$subtitle" ]] && echo -e " \e[34;1m$subtitle\n"
+[[ -n "$subtitle" ]] && echo -e " \e[34;1m$subtitle${style_reset}\n"
 
 main(){
 
