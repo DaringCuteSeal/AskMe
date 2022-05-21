@@ -213,7 +213,7 @@ print_correct(){
 
 	fi
 
-	echo -e "\e[31;35mCorrect answers: $correct/$i"
+	eval "echo -e \"\e[31;35mCorrect answers: $correct/$i\""
 }
 
 if_unicode(){
