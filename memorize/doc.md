@@ -4,7 +4,7 @@ Memorize stuff like words from other languages, terms, etc. quickly.
 ## Features
 - Colors!
 - Usage of simple scripts for questions
-- Question shuffling
+- Question shuffling and looping
 
 ## CLI Usage
 Usage: askme-memorize.sh [options] \<AskMe file\>
