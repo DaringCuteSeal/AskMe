@@ -1,4 +1,4 @@
-# AskMe (Memorize) v.1.0.5
+# AskMe (Memorize) v.1.0.6
 Memorize stuff like words from other languages, terms, etc. quickly.
 
 ## Features
