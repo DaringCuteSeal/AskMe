@@ -2,9 +2,6 @@
 
 ### AskMe Header ###
 
-# Speed up stuff
-export LANG=C
-
 # AskMe version .. ↓
 version='1.0.6'
 

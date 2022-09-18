@@ -2,9 +2,6 @@
 
 ### AskMe Header ###
 
-# Speed up stuff
-export LANG=C
-
 # AskMe version .. ↓
 version='1.0.6'
 
@@ -244,6 +241,9 @@ do
 
 
 done
+
+# Shuffle the choices
+questions_nl="$(shuf <<< "$questions_nl")"
 
 correct=0
 
