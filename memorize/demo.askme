@@ -1,0 +1,16 @@
+#!/hint/bash
+# Demo AskMe questions
+
+title="My Title"
+subtitle="A quite long subtitle"
+
+show_correct=yes
+shuffle=yes
+loop=no
+wait_duration=".7"
+
+declare -A questions=(
+["Cow"]="Moo"
+['Cat']='Meow'
+['Something']='("correct" "also correct")'
+)
