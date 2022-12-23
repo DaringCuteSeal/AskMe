@@ -3,7 +3,7 @@ Memorize stuff like words from other languages, terms, etc. quickly.
 
 ## Features
 - Nicely embeddable to other webpages
-- Light... although my code is still messy but it's overall light because it have a lot of visual effects.
+- Light... although my code is still messy but it's overall light because it doesn't have a lot of visual effects.
 - Input and dropdown mode.
 
 ## Query Strings
