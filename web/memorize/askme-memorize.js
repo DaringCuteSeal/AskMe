@@ -59,7 +59,6 @@ async function parseFile()
 		}
 	}
 	
-
 	// Set title
 	if(!file.title)
 	{
@@ -99,21 +98,6 @@ else
 {
 	filepath = params.file;
 }
-// Shuffle dropdown menu order
-function shufDropdown()
-{
-	let dropdownOrder = file.list.slice();
-	if(params.dropdown == 1)
-	{
-		for(let i = dropdownOrder.length - 2; i > 0; i--)
-		{
-			const j = Math.floor(Math.random() * (i + 1));
-			[dropdownOrder[i][1], dropdownOrder[j][1]] = [dropdownOrder[j][1], dropdownOrder[i][1]];
-		}
-	}
-
-	return dropdownOrder;
-}
 
 function dropdownMenu()
 {
@@ -144,12 +128,18 @@ function appendListTextbox(key)
 
 function initInput()
 {
-	
 	if(params.dropdown == 1)
 	{
+		// Shuffle dropdown order
+		dropdownOrder = file.list.slice();
+		for(let i = dropdownOrder.length - 2; i > 0; i--)
+		{
+			const j = Math.floor(Math.random() * (i + 1));
+			var temp = dropdownOrder[i]
+			dropdownOrder[i] = dropdownOrder[j]
+			dropdownOrder[j] = temp;
+		}
 
-		dropdownOrder = shufDropdown();
-		
 		for(let i = 0; i < file.list.length; i++)
 		{
 			listChildEl = document.createElement("li");
@@ -181,7 +171,7 @@ function initInput()
 function clear()
 {
 	checkBtn.textContent = "Check";
-	for(i = 0; i < inputEls.length; i++)
+	for(let i = 0; i < inputEls.length; i++)
 	{
 		inputEls[i].value = null;
 		inputEls[i].disabled = false;
@@ -195,7 +185,7 @@ function check()
 {
 	if(checkBtn.textContent == "Check")
 	{
-		for(i = 0; i < file.list.length; i++)
+		for(let i = 0; i < file.list.length; i++)
 		{
 
 			inputEls[i].disabled = true;
@@ -215,7 +205,7 @@ function check()
 	else
 	{
 		checkBtn.textContent = "Check";
-		for(i = 0; i < inputEls.length; i++)
+		for(let i = 0; i < inputEls.length; i++)
 		{
 			inputEls[i].disabled = false;
 			inputEls[i].style.backgroundColor = null;
