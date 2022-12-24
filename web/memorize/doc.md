@@ -25,7 +25,7 @@ Input mode allows user to input their answers manually.
 ### Dropdown
 Dropdown mode allows user to choose an answer from a dropdown.
 
-![input mode](img/input.png)
+![dropdown mode](img/dropdown.png)
 
 
 ## Writing Files
