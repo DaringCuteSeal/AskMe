@@ -105,7 +105,7 @@ async function parseFile()
 	// Set description
 	if(!file.description)
 	{
-		descEl.textContent = "AskMe list memorize"
+		descEl.textContent = "An AskMe list memorize question.";
 	}
 	else
 	{
